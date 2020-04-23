@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>App 组件</h1>
+    <div>计数：{{ $store.state.count }}个</div>
+    <div>getters计数：{{ $store.getters.count }}个</div>
+    <button @click="add">commit加</button>
+    <button @click="dispatchAdd">dispatch加</button>
+
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -12,6 +17,14 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  methods: {
+    add() {
+      this.$store.commit('ADD_COUNT', 100)
+    },
+    dispatchAdd() {
+      this.$store.dispatch('addCount', 1)
+    }
   }
 }
 </script>
