@@ -32,7 +32,7 @@ class Store {
     Object.keys(options.getters).forEach(key => {
       Object.defineProperty(this.getters, key, {
         get: () => {
-          return this.state[key]
+          return options.getters[key](this.state)
         },
         enumerable: true
       })
